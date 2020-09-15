@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>opdracht 1</title>
+    </head>
+
+    <body>
+        Kijk in de console
+
+        <script>
+            var mijnAuto = {
+                kleur: "blauw",
+                merk: "Ford",
+                snelheid: 0,
+
+                gasGeven: function () {
+                    this.snelheid += 5;
+                    console.log("snelheid is: " + this.snelheid);
+                },
+
+                toeteren: function () {
+                    console.log("toet!");
+                }
+            }
+
+            mijnAuto.gasGeven();
+            mijnAuto.gasGeven();
+            mijnAuto.gasGeven();
+            mijnAuto.toeteren();
+        </script>
+    </body>
+</html>

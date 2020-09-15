@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>opdracht 3</title>
+
+        <style>
+            #slideholder {
+                width: 600px;
+                height: 900px;
+                border: solid black 3px;
+                margin: auto;
+            }
+
+            #topSlide, #centerSlide, #bottomSlide {
+                width: 600px;
+                height: 300px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="slideholder">
+            <div id="topSlide"></div>
+            <div id="centerSlide"></div>
+            <div id="bottomSlide"></div>
+        </div>
+
+        <script>
+            var topSlide = document.getElementById("topSlide");
+            var centerSlide = document.getElementById("centerSlide");
+            var bottomSlide = document.getElementById("bottomSlide");
+
+            topSlide.style.backgroundImage = "url('img/slide1/top5.png')";
+            centerSlide.style.backgroundImage = "url('img/slide2/center5.png')";
+            bottomSlide.style.backgroundImage = "url('img/slide3/bottom5.png')";
+        </script>
+    </body>
+</html>
