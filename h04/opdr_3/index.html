@@ -6,15 +6,15 @@
 
         <style>
             #slideholder {
-                width: 600px;
-                height: 900px;
+                width: 400px;
+                height: 600px;
                 border: solid black 3px;
                 margin: auto;
             }
 
             #topSlide, #centerSlide, #bottomSlide {
-                width: 600px;
-                height: 300px;
+                width: 400px;
+                height: 200px;
             }
         </style>
     </head>
@@ -27,13 +27,63 @@
         </div>
 
         <script>
+            var plaatjesAantal = 5;
+            var topTeller = 3, centerTeller = 5, bottomTeller = 4;
+
             var topSlide = document.getElementById("topSlide");
             var centerSlide = document.getElementById("centerSlide");
             var bottomSlide = document.getElementById("bottomSlide");
 
-            topSlide.style.backgroundImage = "url('img/slide1/top5.png')";
+            topSlide.style.backgroundImage = "url('img/slide1/top2.png')";
             centerSlide.style.backgroundImage = "url('img/slide2/center5.png')";
-            bottomSlide.style.backgroundImage = "url('img/slide3/bottom5.png')";
+            bottomSlide.style.backgroundImage = "url('img/slide3/bottom4.png')";
+
+            //top image
+            topSlide.addEventListener("click", function () {
+                topSlide.style.backgroundImage = "url('img/slide1/top" + topSlideNumber() + ".png')";
+            });
+
+            function topSlideNumber () {
+                if (topTeller >= plaatjesAantal) {
+                    topTeller = 1;
+                } else {
+                    topTeller++;
+                }
+
+                return topTeller;
+            }
+
+
+            //center image
+            centerSlide.addEventListener("click", function () {
+                centerSlide.style.backgroundImage = "url('img/slide2/center" + centerSlideNumber() + ".png')";
+            });
+
+            function centerSlideNumber () {
+                if (centerTeller >= plaatjesAantal) {
+                    centerTeller = 1;
+                } else {
+                    centerTeller++;
+                }
+
+                return centerTeller;
+            }
+
+
+            //bottom image
+            bottomSlide.addEventListener("click", function () {
+                bottomSlide.style.backgroundImage = "url('img/slide3/bottom" + bottomSlideNumber() + ".png')";
+            });
+
+            function bottomSlideNumber () {
+                if (bottomTeller >= plaatjesAantal) {
+                    bottomTeller = 1;
+                } else {
+                    bottomTeller++;
+                }
+
+                return bottomTeller;
+            }
         </script>
     </body>
 </html>
