@@ -17,7 +17,7 @@
                 background-color: red;
             }
 
-            #pics {
+            #Grid {
                 width: 900px;
                 height: 1350px;
                 border: solid black 1px;
@@ -31,8 +31,48 @@
         <h1>Ant Chooser</h1>
         <h3>Choose your favorite ant!</h3>
 
-        <div id="pics">
+        <div id="Grid"></div>
 
-        </div>
+        <script>
+            var aantalPlaatjes = 9;
+            var Grid = document.getElementById("Grid");
+
+            /* nodig om een div te maken
+            pictureHolderDiv = document.createElement("div");
+            pictureHolderDiv.className = "mierPicture";
+            Grid.appendChild(pictureHolderDiv);
+            */
+
+            for (var i = 1; i <= aantalPlaatjes; i++) {
+                //maakt hoofd div
+                mierPictureDiv = document.createElement("div");
+                mierPictureDiv.className = "mierPicture";
+                Grid.appendChild(mierPictureDiv);
+
+                //1e img
+                newImg = document.createElement("img");
+                newImg.src = "img/geenHart.png";
+                mierPictureDiv.appendChild(newImg);
+
+                //2e img
+                makeNewImg(i, "jpg");
+
+                /*newImg = document.createElement("img");
+                newImg.src = "img/mier" + i + ".jpg";
+                mierPictureDiv.appendChild(newImg);*/
+            }
+
+            function makeNewImg (forTeller_i, fileName) {
+                newImg = document.createElement("img");
+                newImg.src = "img/mier" + forTeller_i + "." + fileName;
+                mierPictureDiv.appendChild(newImg);
+            }
+
+            //picsHolders maken
+            //picsHolder bevat een plaatje van een mier en een favoriet symbool (hartje)
+
+            //mierenPlaatje toevoegen aan picsHolders
+            //favorieteSymbolen toevoegen aan picsHolders
+        </script>
     </body>
 </html>
