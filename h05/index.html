@@ -43,18 +43,18 @@
             Grid.appendChild(pictureHolderDiv);
             */
 
-            for (var i = 1; i <= aantalPlaatjes; i++) {
+            for (let i = 1; i <= aantalPlaatjes; i++) {
                 //maakt hoofd div
                 mierPictureDiv = document.createElement("div");
                 mierPictureDiv.className = "mierPicture";
                 Grid.appendChild(mierPictureDiv);
 
-                //1e img
+                //hart img
                 newImg = document.createElement("img");
                 newImg.src = "img/geenHart.png";
                 mierPictureDiv.appendChild(newImg);
 
-                //2e img
+                //mier img
                 newImg = document.createElement("img");
                 newImg.className = "mierImg";
                 newImg.src = "img/mier" + i + ".jpg";
@@ -63,10 +63,24 @@
 
             var mierImgClick = document.getElementsByClassName("mierImg");
 
-            mierImgClick[1].addEventListener("click", function () {
-                mierImgClick[1].parentElement.childNodes[0].src = "img/welHart.png";
-                //console.log(mierImgClick[1].parentElement);
-            });
+            for (let i = 0; i < aantalPlaatjes; i++) {
+                mierImgClick[i].addEventListener("click", function () {
+                    mierImgClick[i].parentElement.childNodes[0].src = "img/welHart.png";
+
+                    console.log(i + " is de nieuwe i")
+                    //removeHeart(i);
+                });
+            }
+
+            function removeHeart (i) {
+                let oldI;
+
+                oldI = i;
+
+                if (!oldI === i) {
+                    mierImgClick[i].parentElement.childNodes[0].src = "img/geenHart.png";
+                }
+            }
         </script>
     </body>
 </html>
