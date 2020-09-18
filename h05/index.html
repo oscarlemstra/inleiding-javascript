@@ -55,24 +55,18 @@
                 mierPictureDiv.appendChild(newImg);
 
                 //2e img
-                makeNewImg(i, "jpg");
-
-                /*newImg = document.createElement("img");
-                newImg.src = "img/mier" + i + ".jpg";
-                mierPictureDiv.appendChild(newImg);*/
-            }
-
-            function makeNewImg (forTeller_i, fileName) {
                 newImg = document.createElement("img");
-                newImg.src = "img/mier" + forTeller_i + "." + fileName;
+                newImg.className = "mierImg";
+                newImg.src = "img/mier" + i + ".jpg";
                 mierPictureDiv.appendChild(newImg);
             }
 
-            //picsHolders maken
-            //picsHolder bevat een plaatje van een mier en een favoriet symbool (hartje)
+            var mierImgClick = document.getElementsByClassName("mierImg");
 
-            //mierenPlaatje toevoegen aan picsHolders
-            //favorieteSymbolen toevoegen aan picsHolders
+            mierImgClick[1].addEventListener("click", function () {
+                mierImgClick[1].parentElement.childNodes[0].src = "img/welHart.png";
+                //console.log(mierImgClick[1].parentElement);
+            });
         </script>
     </body>
 </html>
