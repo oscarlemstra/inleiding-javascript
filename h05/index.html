@@ -43,6 +43,7 @@
             Grid.appendChild(pictureHolderDiv);
             */
 
+            //maakt een div en zet alle plaatjes op hun plaats
             for (let i = 1; i <= aantalPlaatjes; i++) {
                 //maakt hoofd div
                 mierPictureDiv = document.createElement("div");
@@ -61,24 +62,34 @@
                 mierPictureDiv.appendChild(newImg);
             }
 
+            //kijkt op welke mier is gedrukt
             var mierImgClick = document.getElementsByClassName("mierImg");
 
             for (let i = 0; i < aantalPlaatjes; i++) {
                 mierImgClick[i].addEventListener("click", function () {
                     mierImgClick[i].parentElement.childNodes[0].src = "img/welHart.png";
 
-                    console.log(i + " is de nieuwe i")
-                    //removeHeart(i);
+                    //kijken welke plaatjes geen hart mogen hebben
+                    geenFavoriet(i);
                 });
             }
 
-            function removeHeart (i) {
-                let oldI;
+            function geenFavoriet (selectedI) {
+                let geenFavorietMierNummers = [];
+                console.log("selectedI = " + selectedI);
 
-                oldI = i;
+                //kijkt welke geen favoriet is
+                for (let i = 0; i < aantalPlaatjes; i++) {
+                    if (selectedI !== i) {
+                        geenFavorietMierNummers.push(i);
+                    }
+                }
 
-                if (!oldI === i) {
-                    mierImgClick[i].parentElement.childNodes[0].src = "img/geenHart.png";
+                console.log(geenFavorietMierNummers);
+
+                //alle plaatjes die niet favoriet zijn worden hart loos
+                for (let i = 0; i < geenFavorietMierNummers.length; i++) {
+                    mierImgClick[geenFavorietMierNummers[i]].parentElement.childNodes[0].src = "img/geenHart.png";
                 }
             }
         </script>
