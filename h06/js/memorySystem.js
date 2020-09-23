@@ -1,12 +1,49 @@
-// voor de memory game
+// for the memory game
 
 let PlayersDiv = document.getElementById("Players");
 let GridDiv = document.getElementById("Grid");
 let NextTurnDiv = document.getElementById("NextTurn");
 
+PlayerSystem();
 MakeImg(18);
 MemorySystem();
+//next turn
 
+
+function PlayerSystem () {
+    //player 1
+    let newPlayerDiv = document.createElement("div");
+    let divStyle = newPlayerDiv.style;
+    divStyle.width = "150px";
+    divStyle.height = "70px";
+    divStyle.display = "inline-block";
+    divStyle.border = "solid mediumblue 2px";
+    divStyle.backgroundColor = "cornflowerblue";
+    divStyle.marginBottom = "15px";
+    PlayersDiv.appendChild(newPlayerDiv);
+
+    //players turn display
+    newPlayerDiv = document.createElement("div");
+    divStyle = newPlayerDiv.style;
+    divStyle.width = "250px";
+    divStyle.height = "70px";
+    divStyle.display = "inline-block";
+    divStyle.border = "solid mediumblue 2px";
+    divStyle.backgroundColor = "cornflowerblue";
+    divStyle.marginBottom = "15px";
+    PlayersDiv.appendChild(newPlayerDiv);
+
+    //player 2
+    newPlayerDiv = document.createElement("div");
+    divStyle = newPlayerDiv.style;
+    divStyle.width = "150px";
+    divStyle.height = "70px";
+    divStyle.display = "inline-block";
+    divStyle.border = "solid mediumblue 2px";
+    divStyle.backgroundColor = "cornflowerblue";
+    divStyle.marginBottom = "15px";
+    PlayersDiv.appendChild(newPlayerDiv);
+}
 
 function MakeImg (amount) {
     for (let i = 0; i < amount; i++) {
@@ -49,6 +86,7 @@ function MemorySystem () {
     //debug
     console.log("memory cards file value: " + cardsLocation);
 }
+
 
 
 //testen

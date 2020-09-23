@@ -6,6 +6,11 @@ body {
     background-color: orange;
 }
 
+#Players {
+    width: 975px;
+    margin: auto;
+}
+
 #Grid {
     width: 744px;
     margin: auto;
