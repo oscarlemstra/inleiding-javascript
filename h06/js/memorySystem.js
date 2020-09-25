@@ -9,7 +9,6 @@ MakeImg(18);
 MemorySystem();
 //next turn
 
-
 function PlayerSystem () {
     //player 1
     let newPlayerDiv = document.createElement("div");
@@ -30,6 +29,8 @@ function PlayerSystem () {
     divStyle.display = "inline-block";
     divStyle.border = "solid mediumblue 2px";
     divStyle.backgroundColor = "cornflowerblue";
+    divStyle.marginLeft = "200px";
+    divStyle.marginRight = "200px";
     divStyle.marginBottom = "15px";
     PlayersDiv.appendChild(newPlayerDiv);
 
@@ -68,14 +69,17 @@ function MemorySystem () {
     //checks if memoryCardsImg[i] is clicked
     for (let i = 0; i < memoryCardsImg.length; i++) {
         memoryCardsImg[i].addEventListener("click", function () {
-            if (guesses < maxGuesses) {
+
+            let imageSource = memoryCardsImg[i].src.split('h06/')[1];
+
+            if (imageSource === "img/emptyCard.png" && guesses < maxGuesses) {
                 memoryCardsImg[i].src = "img/card" + cardsLocation[i] + ".jpg";
                 guesses++;
 
                 if (guesses === maxGuesses) {
                     //nextTurn = true;
 
-                    guesses = 0;
+                    //guesses = 0;
                 }
             }
 
