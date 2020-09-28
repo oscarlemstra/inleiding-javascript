@@ -7,7 +7,7 @@ let NextTurnDiv = document.getElementById("NextTurn");
 PlayerSystem();
 MakeImg(18);
 MemorySystem();
-//next turn
+
 
 function PlayerSystem () {
     //player 1
@@ -77,9 +77,10 @@ function MemorySystem () {
                 guesses++;
 
                 if (guesses === maxGuesses) {
-                    //nextTurn = true;
-
+                    nextTurn = true;
                     //guesses = 0;
+
+                    NextTurn(nextTurn);
                 }
             }
 
@@ -91,24 +92,9 @@ function MemorySystem () {
     console.log("memory cards file value: " + cardsLocation);
 }
 
+function NextTurn (nextTurn) {
 
-
-//testen
-function MakeImg2 (amount) {
-    let lock = false;
-
-    for (let i = 0; i < amount / 2; i++) {
-        let newImg = document.createElement("img");
-        newImg.className = "card";
-        newImg.src = "img/card" + i + ".jpg";
-        GridDiv.appendChild(newImg);
-
-        if (i === amount / 2 - 1 && lock === false) {
-            i = 0 - 1;
-            lock = true;
-
-        }
-
-        //console.log(i);
+    if (nextTurn === true) {
+        console.log(nextTurn);
     }
 }
