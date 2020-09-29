@@ -76,17 +76,22 @@ function MemorySystem () {
                 memoryCardsImg[i].src = "img/card" + cardsLocation[i] + ".jpg";
                 guesses++;
 
+                //gives NextTurn order to make a button
                 if (guesses === maxGuesses) {
                     nextTurn = true;
-                    //guesses = 0;
-
                     NextTurn(nextTurn);
                 }
             }
-
-            console.log(guesses);
         })
     }
+
+    //next turn button listener
+    NextTurnDiv.addEventListener("click", function () {
+        nextTurn = false;
+        guesses = 0;
+
+        NextTurn(nextTurn);
+    })
 
     //debug
     console.log("memory cards file value: " + cardsLocation);
@@ -95,6 +100,17 @@ function MemorySystem () {
 function NextTurn (nextTurn) {
 
     if (nextTurn === true) {
-        console.log(nextTurn);
+        let nextTurnP = document.createElement("p");
+        nextTurnP.style.border = "solid mediumblue 2px";
+        nextTurnP.style.backgroundColor = "cornflowerblue";
+        nextTurnP.style.fontSize = "25px";
+        nextTurnP.innerText = "Next Turn";
+        nextTurnP.style.padding = "18px";
+        nextTurnP.style.marginTop = "15px";
+        NextTurnDiv.appendChild(nextTurnP);
+    }
+
+    if (nextTurn === false) {
+        document.getElementById("NextTurn").childNodes[0].remove();
     }
 }

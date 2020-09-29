@@ -4,6 +4,8 @@
 
 body {
     background-color: orange;
+    font-family: "Arial", "sans-serif";
+    color: white;
 }
 
 #Players {
@@ -14,6 +16,11 @@ body {
 
 #Grid {
     width: 744px;
+    margin: auto;
+}
+
+#NextTurn {
+    width: 150px;
     margin: auto;
 }
 
