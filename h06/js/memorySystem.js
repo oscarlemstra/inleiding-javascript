@@ -10,40 +10,50 @@ MemorySystem();
 
 
 function PlayerSystem () {
-    //player 1
-    let newPlayerDiv = document.createElement("div");
-    let divStyle = newPlayerDiv.style;
-    divStyle.width = "150px";
-    divStyle.height = "70px";
-    divStyle.display = "inline-block";
-    divStyle.border = "solid mediumblue 2px";
-    divStyle.backgroundColor = "cornflowerblue";
-    divStyle.marginBottom = "15px";
+    //makes player 1
+    let newPlayerDiv = document.createElement("p");
+    let pStyle = newPlayerDiv.style;
+    pStyle.display = "inline-block";
+    pStyle.border = "solid mediumblue 2px";
+    pStyle.backgroundColor = "cornflowerblue";
+    pStyle.fontSize = "25px";
+    pStyle.padding = "20px";
+    pStyle.marginBottom = "15px";
     PlayersDiv.appendChild(newPlayerDiv);
 
-    //players turn display
-    newPlayerDiv = document.createElement("div");
-    divStyle = newPlayerDiv.style;
-    divStyle.width = "250px";
-    divStyle.height = "70px";
-    divStyle.display = "inline-block";
-    divStyle.border = "solid mediumblue 2px";
-    divStyle.backgroundColor = "cornflowerblue";
-    divStyle.marginLeft = "200px";
-    divStyle.marginRight = "200px";
-    divStyle.marginBottom = "15px";
+    //makes players turn display
+    newPlayerDiv = document.createElement("p");
+    pStyle = newPlayerDiv.style;
+    pStyle.display = "inline-block";
+    pStyle.border = "solid mediumblue 2px";
+    pStyle.backgroundColor = "cornflowerblue";
+    pStyle.fontSize = "25px";
+    pStyle.padding = "20px";
+    pStyle.marginLeft = "200px";
+    pStyle.marginRight = "200px";
+    pStyle.marginBottom = "15px";
     PlayersDiv.appendChild(newPlayerDiv);
 
-    //player 2
-    newPlayerDiv = document.createElement("div");
-    divStyle = newPlayerDiv.style;
-    divStyle.width = "150px";
-    divStyle.height = "70px";
-    divStyle.display = "inline-block";
-    divStyle.border = "solid mediumblue 2px";
-    divStyle.backgroundColor = "cornflowerblue";
-    divStyle.marginBottom = "15px";
+    //makes player 2
+    newPlayerDiv = document.createElement("p");
+    pStyle = newPlayerDiv.style;
+    pStyle.display = "inline-block";
+    pStyle.border = "solid mediumblue 2px";
+    pStyle.backgroundColor = "cornflowerblue";
+    pStyle.fontSize = "25px";
+    pStyle.padding = "20px";
+    pStyle.marginBottom = "15px";
     PlayersDiv.appendChild(newPlayerDiv);
+
+
+    //player count system
+    let player1 = document.getElementById("Players").childNodes[0];
+    let playerTurn = document.getElementById("Players").childNodes[1];
+    let player2 = document.getElementById("Players").childNodes[2];
+
+    player1.innerText = "Bob: " + "0";
+    playerTurn.innerText = "Turn is for: " + "niks";
+    player2.innerText = "Ben: " + "0";
 }
 
 function MakeImg (amount) {
@@ -76,7 +86,7 @@ function MemorySystem () {
                 memoryCardsImg[i].src = "img/card" + cardsLocation[i] + ".jpg";
                 guesses++;
 
-                //gives NextTurn order to make a button
+                //gives NextTurn() order to make a button
                 if (guesses === maxGuesses) {
                     nextTurn = true;
                     NextTurn(nextTurn);
@@ -94,7 +104,7 @@ function MemorySystem () {
     })
 
     //debug
-    console.log("memory cards file value: " + cardsLocation);
+    console.log("memory cards file values: " + cardsLocation);
 }
 
 function NextTurn (nextTurn) {
