@@ -4,12 +4,12 @@ let PlayersDiv = document.getElementById("Players");
 let GridDiv = document.getElementById("Grid");
 let NextTurnDiv = document.getElementById("NextTurn");
 
-PlayerSystem();
+MakePlayerElements();
 MakeImg(18);
 MemorySystem();
 
 
-function PlayerSystem () {
+function MakePlayerElements () {
     //makes player 1
     let newPlayerDiv = document.createElement("p");
     let pStyle = newPlayerDiv.style;
@@ -44,16 +44,6 @@ function PlayerSystem () {
     pStyle.padding = "20px";
     pStyle.marginBottom = "15px";
     PlayersDiv.appendChild(newPlayerDiv);
-
-
-    //player count system
-    let player1 = document.getElementById("Players").childNodes[0];
-    let playerTurn = document.getElementById("Players").childNodes[1];
-    let player2 = document.getElementById("Players").childNodes[2];
-
-    player1.innerText = "Bob: " + "0";
-    playerTurn.innerText = "Turn is for: " + "niks";
-    player2.innerText = "Ben: " + "0";
 }
 
 function MakeImg (amount) {
@@ -72,24 +62,76 @@ function MemorySystem () {
     //shuffle array
     cardsLocation.sort(function (a, b){return 0.5 - Math.random()});
 
-    let guesses = 0;
-    let maxGuesses = 2;
+    let guesses = 0 - 1; //-1 because the pair array uses the guesses to pick the card
+    let maxGuesses = 2 - 1;
     let nextTurn = false;
+    let bobScore = 0, benScore = 0;
+    let pair = [];
+    let turnTbob_Fben = true; //true = turn for bob, false = turn is for ben
+
+    //gets the player elements
+    let player1 = document.getElementById("Players").childNodes[0];
+    let playerTurn = document.getElementById("Players").childNodes[1];
+    let player2 = document.getElementById("Players").childNodes[2];
+
+    player1.innerText = "Bob: " + bobScore;
+    playerTurn.innerText = "Turn is for: Bob";
+    player2.innerText = "Ben: " + benScore;
+
+    //chance the turn display
+    /*if (turnTbob_Fben === true) {
+        playerTurn.innerText = "Turn is for: Bob";
+    } else {
+        playerTurn.innerText = "Turn is for: Ben";
+    }*/
+
 
     //checks if memoryCardsImg[i] is clicked
     for (let i = 0; i < memoryCardsImg.length; i++) {
         memoryCardsImg[i].addEventListener("click", function () {
 
+            //gets the course from the pont h06/
             let imageSource = memoryCardsImg[i].src.split('h06/')[1];
 
             if (imageSource === "img/emptyCard.png" && guesses < maxGuesses) {
                 memoryCardsImg[i].src = "img/card" + cardsLocation[i] + ".jpg";
                 guesses++;
+                pair[guesses] = memoryCardsImg[i].src;
+
+                //checks if pair is equal
+                if (pair[0] === pair[1]) {
+                    if (turnTbob_Fben === true) {
+                        bobScore++;
+                        player1.innerText = "Bob: " + bobScore;
+                    } else {
+                        benScore++;
+                        player2.innerText = "Ben: " + benScore;
+                    }
+                }
+
 
                 //gives NextTurn() order to make a button
                 if (guesses === maxGuesses) {
                     nextTurn = true;
                     NextTurn(nextTurn);
+
+                    //checks if pair is unequal
+                    if (pair[0] !== pair[1]) {
+                        if (turnTbob_Fben === true) {
+                            turnTbob_Fben = false;
+                            playerTurn.innerText = "Turn is for: Ben";
+                        } else {
+                            turnTbob_Fben = true;
+                            playerTurn.innerText = "Turn is for: Bob";
+                        }
+
+                        //turns the wrong cards to their backside
+                        for (let i = 0; i < pair.length; i++) {
+                            pair[i].src = "img/emptyCard.png";
+
+                            console.log(pair[i]);
+                        }
+                    }
                 }
             }
         })
@@ -98,7 +140,7 @@ function MemorySystem () {
     //next turn button listener
     NextTurnDiv.addEventListener("click", function () {
         nextTurn = false;
-        guesses = 0;
+        guesses = 0 - 1;
 
         NextTurn(nextTurn);
     })
