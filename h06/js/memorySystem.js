@@ -78,60 +78,24 @@ function MemorySystem () {
     playerTurn.innerText = "Turn is for: Bob";
     player2.innerText = "Ben: " + benScore;
 
-    //chance the turn display
-    /*if (turnTbob_Fben === true) {
-        playerTurn.innerText = "Turn is for: Bob";
-    } else {
-        playerTurn.innerText = "Turn is for: Ben";
-    }*/
-
 
     //checks if memoryCardsImg[i] is clicked
     for (let i = 0; i < memoryCardsImg.length; i++) {
         memoryCardsImg[i].addEventListener("click", function () {
 
-            //gets the course from the pont h06/
+            //gets the source from the point h06/
             let imageSource = memoryCardsImg[i].src.split('h06/')[1];
 
             if (imageSource === "img/emptyCard.png" && guesses < maxGuesses) {
                 memoryCardsImg[i].src = "img/card" + cardsLocation[i] + ".jpg";
                 guesses++;
-                pair[guesses] = memoryCardsImg[i].src;
-
-                //checks if pair is equal
-                if (pair[0] === pair[1]) {
-                    if (turnTbob_Fben === true) {
-                        bobScore++;
-                        player1.innerText = "Bob: " + bobScore;
-                    } else {
-                        benScore++;
-                        player2.innerText = "Ben: " + benScore;
-                    }
-                }
+                pair[guesses] = memoryCardsImg[i];
 
 
                 //gives NextTurn() order to make a button
                 if (guesses === maxGuesses) {
                     nextTurn = true;
                     NextTurn(nextTurn);
-
-                    //checks if pair is unequal
-                    if (pair[0] !== pair[1]) {
-                        if (turnTbob_Fben === true) {
-                            turnTbob_Fben = false;
-                            playerTurn.innerText = "Turn is for: Ben";
-                        } else {
-                            turnTbob_Fben = true;
-                            playerTurn.innerText = "Turn is for: Bob";
-                        }
-
-                        //turns the wrong cards to their backside
-                        for (let i = 0; i < pair.length; i++) {
-                            pair[i].src = "img/emptyCard.png";
-
-                            console.log(pair[i]);
-                        }
-                    }
                 }
             }
         })
@@ -143,6 +107,57 @@ function MemorySystem () {
         guesses = 0 - 1;
 
         NextTurn(nextTurn);
+
+        //checks if pair is equal
+        if (pair[0].src === pair[1].src) {
+            if (turnTbob_Fben === true) {
+                bobScore++;
+                player1.innerText = "Bob: " + bobScore;
+            } else {
+                benScore++;
+                player2.innerText = "Ben: " + benScore;
+            }
+        }
+
+        //checks if pair is unequal and turns the cards
+        if (pair[0].src !== pair[1].src) {
+            if (turnTbob_Fben === true) {
+                turnTbob_Fben = false;
+                playerTurn.innerText = "Turn is for: Ben";
+            } else {
+                turnTbob_Fben = true;
+                playerTurn.innerText = "Turn is for: Bob";
+            }
+
+            for (let i = 0; i < pair.length; i++) {
+                pair[i].src = "img/emptyCard.png";
+                //console.log(pair[i]);
+            }
+        }
+
+        //checks if there are no more empty cards and then shows the result
+        let gameIsOver = false;
+        let cardCount = 0;
+
+        for (let i = 0; memoryCardsImg.length; i++) {
+            let imageSource = memoryCardsImg[i].src.split('h06/')[0];
+
+            if (memoryCardsImg[i].src !== imageSource + "h06/" + "img/emptyCard.png") {
+                cardCount++;
+            }
+
+            if (cardCount === 18) {
+                gameIsOver = true;
+            }
+
+            if (gameIsOver === true) {
+                if (bobScore > benScore) {
+                    playerTurn.innerText = "Bob wins";
+                } else {
+                    playerTurn.innerText = "Ben wins";
+                }
+            }
+        }
     })
 
     //debug
