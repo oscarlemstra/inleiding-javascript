@@ -1,6 +1,6 @@
 # inleiding-javascript
 
-Dit zijn de uitwerkingen van de opdrachten uit de classroom inleiding-html-css.
+Dit zijn de uitwerkingen van de opdrachten uit de classroom inleiding-javascript.
 
 <br>
 
