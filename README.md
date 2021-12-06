@@ -15,4 +15,4 @@ Link naar de [website](https://relaxed-khorana-0fb46d.netlify.app/).
 - DOM
 - Arrays
 - Functies
-- Interactief
+- Interactieve website
